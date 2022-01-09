@@ -1,0 +1,46 @@
+server:
+  port: 8082
+
+compiler:
+  docker:
+    image:
+      delete: ${DELETE_DOCKER_IMAGE:true} # delete the docker image at the end of the execution of the container, by default it's set to true.
+  execution-memory:
+    max: ${EXECUTION_MEMORY_MAX:10000}
+    min: ${EXECUTION_MEMORY_MIN:0}
+  execution-time:
+    max: ${EXECUTION_TIME_MAX:15}
+    min: ${EXECUTION_TIME_MIN:0}
+
+spring:
+  application:
+    name: remote-code-compiler
+
+  # Apache Kafka
+  kafka:
+    topics:
+      input-topic: ${KAFKA_INPUT_TOPIC:kafka.topic.input}
+      output-topic: ${KAFKA_OUTPUT_TOPIC:kafka.topic.output}
+    streams:
+      application-id: ${KAFKA_CONSUMER_GROUP_ID:compilerID}
+    bootstrap-servers: ${KAFKA_HOSTS:localhost:29092}
+
+  # Rabbit MQ
+  rabbitmq:
+    queues:
+      input: ${RABBIT_QUEUE_INPUT:rabbit.queue.input}
+      output: ${RABBIT_QUEUE_OUTPUT:rabbit.queue.output}
+    password: ${RABBIT_PASSWORD:guest}
+    username: ${RABBIT_USERNAME:guest}
+    addresses: ${RABBIT_HOSTS:localhost:5672}
+
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus

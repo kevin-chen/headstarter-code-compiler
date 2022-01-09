@@ -66,7 +66,8 @@ public class CompilerServiceImpl implements CompilerService {
 		
 		// Unique image name
 		String imageName = UUID.randomUUID().toString();
-		
+
+    // Checks if valid memory limit
 		if (memoryLimit < minExecutionMemory || memoryLimit > maxExecutionMemory) {
 			log.info(imageName + " Error memoryLimit must be between {}Mb and {}Mb, provided : {}", minExecutionMemory, maxExecutionMemory, memoryLimit);
 			return ResponseEntity
@@ -74,7 +75,7 @@ public class CompilerServiceImpl implements CompilerService {
 					.body("Error memoryLimit must be between " + minExecutionMemory + "Mb and " + maxExecutionMemory + "Mb, provided : " + memoryLimit);
 		}
 		
-		
+		// Checks if valid time limit
 		if (timeLimit < minExecutionTime || timeLimit > maxExecutionTime) {
 			log.info(imageName + " Error timeLimit must be between {} Sec and {} Sec, provided : {}", minExecutionTime, maxExecutionTime, timeLimit);
 			return ResponseEntity
@@ -82,6 +83,7 @@ public class CompilerServiceImpl implements CompilerService {
 					.body("Error timeLimit must be between " + minExecutionTime + " Sec and " + maxExecutionTime + " Sec, provided : " + timeLimit);
 		}
 		
+    // Gets the appropriate language naming for files and folders
 		String folder = language.getFolder();
 		String file = language.getFile();
 		
@@ -90,10 +92,12 @@ public class CompilerServiceImpl implements CompilerService {
 		// Build one docker image at time
 		synchronized (this) {
 			
+      // Create shell command file to execute code
 			createEntrypointFile(sourceCode, inputFile, timeLimit, memoryLimit, language);
 			
 			log.info(imageName + " entrypoint.sh file has been created");
 			
+      // Save all uploaded files
 			try {
 				FilesUtil.saveUploadedFiles(sourceCode, folder + "/" + file);
 				FilesUtil.saveUploadedFiles(outputFile, folder + "/" + outputFile.getOriginalFilename());
@@ -106,6 +110,7 @@ public class CompilerServiceImpl implements CompilerService {
 			
 			try {
 				log.info(imageName + " Building the docker image");
+        // Runs command to build docker image with language base image such has python
 				AtomicInteger status = new AtomicInteger(containerService.buildImage(folder, imageName));
 				if (status.get() == 0)
 					log.info( imageName + " Docker image has been built");

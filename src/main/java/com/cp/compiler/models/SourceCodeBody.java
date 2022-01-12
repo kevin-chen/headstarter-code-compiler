@@ -5,11 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-/**
- * The type Response.
- *
- * @author Zakaria Maaraki
- */
 @Data
 @AllArgsConstructor
 @ApiModel(description = "The provided code")

@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.cp.compiler.models.SourceCodeBody;
+import org.springframework.http.MediaType;
 
 @RestController
 @RequestMapping("/compiler")
@@ -33,7 +34,7 @@ public class CompilerController {
    *         Exceeded, Memory Limit Exceeded, Compilation Error, RunTime Error)
    * @throws CompilerServerException The compiler exception
    */
-  @PostMapping("/python")
+  @PostMapping(value = "/python", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "Python compiler", notes = "Provide source code, time limit and memory limit", response = Response.class)
   public ResponseEntity<Object> compilePython(
       @ApiParam(value = "Your source code") @RequestBody SourceCodeBody scb,

@@ -62,7 +62,7 @@ public class CompilerServiceImpl implements CompilerService {
    * {@inheritDoc}
    */
   @Override
-  public ResponseEntity<Object> compile(MultipartFile sourceCode,
+  public ResponseEntity<Object> compile(String sourceCode,
       int timeLimit, int memoryLimit, Language language) throws CompilerServerException {
 
     // Unique image name

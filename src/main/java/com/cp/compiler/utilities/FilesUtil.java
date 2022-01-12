@@ -27,19 +27,17 @@ public class FilesUtil {
 	 * @param name the path where the file will be saved
 	 * @throws IOException the exception
 	 */
-	public static void saveUploadedFiles(MultipartFile file, String name) throws IOException {
+	public static void saveUploadedFiles(String sourceCode, String name) throws IOException {
 		// if (file.isEmpty())
 		// 	return;
 		// byte[] bytes = file.getBytes();
-
-    String code = "def main():\n    print(3)\n\nmain()";
-    byte[] bytes = code.getBytes();
+    
+    byte[] bytes = sourceCode.getBytes();
 
     log.info("Written bytes to file {} and {}", bytes, new String(bytes));
 
 		Path path = Paths.get(name);
 		Files.write(path, bytes);
-
 	}
 	
 	/**

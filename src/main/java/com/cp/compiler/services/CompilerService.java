@@ -24,7 +24,7 @@ public interface CompilerService {
 	 * @return a ResponseEntity containing the result of the execution
 	 * @throws CompilerServerException error from the server
 	 */
-	ResponseEntity<Object> compile(MultipartFile sourceCode,
+	ResponseEntity<Object> compile(String sourceCode,
 	                               int timeLimit, int memoryLimit, Language language) throws CompilerServerException;
 	
 	/**

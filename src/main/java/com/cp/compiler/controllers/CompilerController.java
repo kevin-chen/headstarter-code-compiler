@@ -36,7 +36,7 @@ public class CompilerController {
   @PostMapping("/python")
   @ApiOperation(value = "Python compiler", notes = "Provide source code, time limit and memory limit", response = Response.class)
   public ResponseEntity<Object> compilePython(
-      @ApiParam(value = "Your source code") @RequestPart(value = "sourceCode") MultipartFile sourceCode,
+      @ApiParam(value = "Your source code") @RequestPart(value = "sourceCode") String sourceCode,
       @ApiParam(value = "The time limit that the execution must not exceed") @RequestParam(value = "timeLimit") int timeLimit,
       @ApiParam(value = "The memory limit that the running program must not exceed") @RequestParam(value = "memoryLimit") int memoryLimit)
       throws CompilerServerException {

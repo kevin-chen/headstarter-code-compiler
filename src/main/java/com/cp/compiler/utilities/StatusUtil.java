@@ -2,11 +2,6 @@ package com.cp.compiler.utilities;
 
 import com.cp.compiler.models.Verdict;
 
-/**
- * The type Status util.
- *
- * @author Zakaria Maaraki
- */
 public class StatusUtil {
 	
 	private StatusUtil() {
@@ -25,12 +20,7 @@ public class StatusUtil {
 		switch (status) {
 			
 			// The code compile and the execution finish before the time limit, and the memory does not exceed the limit
-			case 0:
-				// Is it the excepted output ?
-				if (ans)
-					return Verdict.ACCEPTED.getValue();
-				else
-					return Verdict.WRONG_ANSWER.getValue();
+			case 0: return Verdict.NOERROR.getValue();
 			
 			case 2: return Verdict.COMPILATION_ERROR.getValue();
 			

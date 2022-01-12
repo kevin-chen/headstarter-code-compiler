@@ -20,8 +20,4 @@ public class Result {
 	
 	@ApiModelProperty(notes = "The output of the program during the execution")
 	private String output;
-	
-	@ApiModelProperty(notes = "The expected output")
-	private String expectedOutput;
-	
 }

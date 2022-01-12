@@ -10,6 +10,11 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 public enum Verdict {
+
+  /**
+   * No error
+   */
+  NOERROR("No error detected")
 	
 	/**
 	 * Accepted verdict.

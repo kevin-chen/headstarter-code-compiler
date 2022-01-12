@@ -14,7 +14,7 @@ public enum Verdict {
   /**
    * No error
    */
-  NOERROR("No error detected")
+  NOERROR("No error detected"),
 	
 	/**
 	 * Accepted verdict.

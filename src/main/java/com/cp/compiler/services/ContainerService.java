@@ -28,7 +28,7 @@ public interface ContainerService {
 	 * @param outputFile the expected output result to compare the output result of the container with the expected output
 	 * @return an Object Result, represents the result of the code execution
 	 */
-	Result runCode(String imageName, MultipartFile outputFile);
+	Result runCode(String imageName);
 	
 	/**
 	 * Gets running containers.

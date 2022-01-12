@@ -20,9 +20,6 @@ public class Response {
 	@ApiModelProperty(notes = "The output of the program during the execution")
 	private String output;
 	
-	@ApiModelProperty(notes = "The expected output")
-	private String expectedOutput;
-	
 	@ApiModelProperty(notes = "The value can be one of these : Accepted, Wrong Answer, Compilation Error, Runtime Error, Out Of Memory, Time Limit Exceeded")
 	private String status;
 	

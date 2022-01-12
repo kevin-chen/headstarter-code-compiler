@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import com.cp.compiler.models.SourceCodeBody;
 
 @RestController
 @RequestMapping("/compiler")
@@ -36,10 +36,10 @@ public class CompilerController {
   @PostMapping("/python")
   @ApiOperation(value = "Python compiler", notes = "Provide source code, time limit and memory limit", response = Response.class)
   public ResponseEntity<Object> compilePython(
-      @ApiParam(value = "Your source code") @RequestPart(value = "sourceCode") String sourceCode,
+      @ApiParam(value = "Your source code") @RequestBody SourceCodeBody scb,
       @ApiParam(value = "The time limit that the execution must not exceed") @RequestParam(value = "timeLimit") int timeLimit,
       @ApiParam(value = "The memory limit that the running program must not exceed") @RequestParam(value = "memoryLimit") int memoryLimit)
       throws CompilerServerException {
-    return compiler.compile(sourceCode, timeLimit, memoryLimit, Language.PYTHON);
+    return compiler.compile(scb.getCode(), timeLimit, memoryLimit, Language.PYTHON);
   }
 }

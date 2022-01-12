@@ -106,7 +106,7 @@ public class CompilerServiceImpl implements CompilerService {
       // Save all uploaded files
       try {
         FilesUtil.saveUploadedFiles(sourceCode, folder + "/" + file);
-        log.info(imageName + " Files have been uploaded");
+        log.info(imageName + " Files have been uploaded to the folder");
       } catch (IOException e) {
         throw new CompilerServerException(imageName + " " + e.getMessage());
       }

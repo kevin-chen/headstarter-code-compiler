@@ -28,11 +28,16 @@ public class FilesUtil {
 	 * @throws IOException the exception
 	 */
 	public static void saveUploadedFiles(MultipartFile file, String name) throws IOException {
-		if (file.isEmpty())
-			return;
-		byte[] bytes = file.getBytes();
+		// if (file.isEmpty())
+		// 	return;
+		// byte[] bytes = file.getBytes();
+
+    String code = "def main():\n    print(3)\n\nmain()";
+    byte[] bytes = code.getBytes("IBM01140");
+
 		Path path = Paths.get(name);
 		Files.write(path, bytes);
+
 	}
 	
 	/**

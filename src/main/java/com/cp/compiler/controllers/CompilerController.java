@@ -12,6 +12,7 @@ import com.cp.compiler.models.SourceCodeBody;
 import org.springframework.http.MediaType;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/compiler")
 public class CompilerController {
 

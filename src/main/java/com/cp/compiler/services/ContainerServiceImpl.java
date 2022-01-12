@@ -59,7 +59,7 @@ public class ContainerServiceImpl implements ContainerService {
    * {@inheritDoc}
    */
   @Override
-  public Result runCode(String imageName, MultipartFile outputFile) {
+  public Result runCode(String imageName) {
 
     return runTimer.record(() -> {
 
@@ -88,7 +88,7 @@ public class ContainerServiceImpl implements ContainerService {
            * so we assume that the comparison between the output and the excepted output
            * return false
            */
-          String statusResponse = StatusUtil.statusResponse(status, false);
+          String statusResponse = StatusUtil.statusResponse(status);
           return new Result(statusResponse, "No available output");
         } else {
           status = process.exitValue();
@@ -102,7 +102,7 @@ public class ContainerServiceImpl implements ContainerService {
         }
       } catch (Exception e) {
         log.error("Error : ", e);
-        return new Result(StatusUtil.statusResponse(1, false), "A server side error has occurred");
+        return new Result(StatusUtil.statusResponse(1), "A server side error has occurred");
       }
 
     });

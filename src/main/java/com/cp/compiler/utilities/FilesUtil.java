@@ -33,7 +33,7 @@ public class FilesUtil {
 		// byte[] bytes = file.getBytes();
 
     String code = "def main():\n    print(3)\n\nmain()";
-    byte[] bytes = code.getBytes("");
+    byte[] bytes = code.getBytes();
 
     log.info("Written bytes to file {} and {}", bytes, new String(bytes));
 

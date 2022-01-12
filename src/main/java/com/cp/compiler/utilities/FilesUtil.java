@@ -33,9 +33,9 @@ public class FilesUtil {
 		// byte[] bytes = file.getBytes();
 
     String code = "def main():\n    print(3)\n\nmain()";
-    byte[] bytes = code.getBytes("IBM01140");
+    byte[] bytes = code.getBytes("");
 
-    log.info("Written bytes to file {}", bytes);
+    log.info("Written bytes to file {} and {}", bytes, new String(bytes));
 
 		Path path = Paths.get(name);
 		Files.write(path, bytes);

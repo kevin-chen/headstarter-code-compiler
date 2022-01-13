@@ -3,47 +3,16 @@ package com.cp.compiler.models;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-/**
- * The enum Verdict.
- *
- * @author Zakaria Maaraki
- */
 @AllArgsConstructor
 public enum Verdict {
+    NO_ERROR("No error detected"),
+    ACCEPTED("Accepted"),
+    WRONG_ANSWER("Wrong Answer"),
+    COMPILATION_ERROR("Compilation Error"),
+    OUT_OF_MEMORY("Out Of Memory"),
+    TIME_LIMIT_EXCEEDED("Time Limit Exceeded"),
+    RUNTIME_ERROR("Runtime Error");
 
-  /**
-   * No error
-   */
-  NOERROR("No error detected"),
-	
-	/**
-	 * Accepted verdict.
-	 */
-	ACCEPTED("Accepted"),
-	/**
-	 * The Wrong answer.
-	 */
-	WRONG_ANSWER("Wrong Answer"),
-	/**
-	 * The Compilation error.
-	 */
-	COMPILATION_ERROR("Compilation Error"),
-	/**
-	 * The Out of memory.
-	 */
-	OUT_OF_MEMORY("Out Of Memory"),
-	/**
-	 * The Time limit exceeded.
-	 */
-	TIME_LIMIT_EXCEEDED("Time Limit Exceeded"),
-	/**
-	 * The Runtime error.
-	 */
-	RUNTIME_ERROR("Runtime Error");
-	
-	/**
-	 * The Value.
-	 */
-	@Getter
-	String value;
+    @Getter
+    String value;
 }

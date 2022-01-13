@@ -1,13 +1,14 @@
 package com.cp.compiler.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Request {
-
 	@JsonProperty("sourceCode")
 	private String sourceCode;
 	
@@ -19,10 +20,4 @@ public class Request {
 	
 	@JsonProperty("memoryLimit")
 	private int memoryLimit;
-	
-	// public MultipartFile getSourceCode() throws IOException {
-	// 	File sourceCodeFile = new File(language.getFolder() + "/" + language.getFile());
-	// 	return new MockMultipartFile(language.getFile(), language.getFile(), null , new ByteArrayInputStream(this.sourceCode.getBytes()));
-	// }
-
 }
